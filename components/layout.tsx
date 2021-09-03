@@ -3,8 +3,11 @@ import Image from 'next/image'
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
+import { Box } from '@chakra-ui/layout'
+import { useColorMode } from '@chakra-ui/color-mode'
+import { Button } from '@chakra-ui/button'
 
-const name = '[Your Name]'
+const name = 'Muhammad Adnan R'
 export const siteTitle = 'Next.js Sample Website'
 
 export default function Layout({
@@ -14,6 +17,7 @@ export default function Layout({
   children: React.ReactNode
   home?: boolean
 }) {
+  const {toggleColorMode} = useColorMode()
   return (
     <div className={styles.container}>
       <Head>
@@ -65,6 +69,12 @@ export default function Layout({
             </h2>
           </>
         )}
+        <Box mb={16 }>
+        <Link href="/login">
+          Login Page
+        </Link>
+        <Button ml={4} onClick={toggleColorMode}>Toggle Color Mode</Button>
+        </Box>
       </header>
       <main>{children}</main>
       {!home && (
